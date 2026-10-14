@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-MY">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Us — DXN Wellness Store Malaysia</title>
+<meta name="description" content="Get in touch with our DXN store in Malaysia. WhatsApp, phone, email, shipping and delivery details, payment methods and answers to frequently asked questions.">
+<meta name="theme-color" content="#D6161C">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }
+</script>
+</head>
+<body data-page="contact">
+
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="pagehead">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a><span>/</span><span>Contact</span></div>
+      <h1>Talk to a real person</h1>
+      <p>Questions about a product, an order, delivery times or DXN membership — WhatsApp is fastest,
+         but phone and email work too.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="contactgrid">
+
+      <!-- left: info -->
+      <aside>
+        <section class="panel">
+          <div class="panel__head"><h2>Contact details</h2></div>
+          <div class="panel__body" id="contact-info"></div>
+        </section>
+
+        <section class="mapbox" style="margin-top:20px" id="map"></section>
+
+        <section class="panel" style="margin-top:20px">
+          <div class="panel__body" style="padding:18px 20px">
+            <h3 style="font-size:.95rem;margin-bottom:10px">We reply fastest on WhatsApp</h3>
+            <p style="font-size:.85rem;color:var(--muted);margin-bottom:14px">
+              During working hours we usually answer within the hour. Outside those hours we'll reply the next morning.
+            </p>
+            <a class="btn btn--wa btn--block" id="big-wa" href="#" target="_blank" rel="noopener">Start a WhatsApp chat</a>
+          </div>
+        </section>
+      </aside>
+
+      <!-- right: form -->
+      <section class="panel">
+        <div class="panel__head"><h2>Send us a message</h2></div>
+        <div class="panel__body">
+          <form id="contact-form" novalidate>
+            <div class="fields">
+              <div class="field">
+                <label for="c-name">Your name <span class="req">*</span></label>
+                <input id="c-name" name="name" type="text" autocomplete="name" placeholder="e.g. Tan Wei Ming" required>
+                <span class="err">Please tell us your name</span>
+              </div>
+              <div class="field">
+                <label for="c-phone">Mobile number <span class="req">*</span></label>
+                <input id="c-phone" name="phone" type="tel" autocomplete="tel" placeholder="012-345 6789" required>
+                <span class="err">Enter a valid mobile number</span>
+              </div>
+              <div class="field field--full">
+                <label for="c-topic">What is this about?</label>
+                <select id="c-topic" name="topic">
+                  <option>Product question</option>
+                  <option>An order I placed</option>
+                  <option>Delivery / tracking</option>
+                  <option>Returns or a damaged item</option>
+                  <option>DXN membership</option>
+                  <option>Bulk / office / resale order</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="field field--full">
+                <label for="c-order">Order ID <span class="muted" style="font-weight:600">(if you have one)</span></label>
+                <input id="c-order" name="order" type="text" placeholder="DXN-20260101-A1B2">
+              </div>
+              <div class="field field--full">
+                <label for="c-msg">Message <span class="req">*</span></label>
+                <textarea id="c-msg" name="message" rows="6" placeholder="Tell us what you need…" required></textarea>
+                <span class="err">Please write a short message</span>
+              </div>
+            </div>
+
+            <div class="hero__cta" style="margin-top:20px">
+              <button class="btn btn--wa btn--lg" type="submit" id="send-wa">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.94.53 3.75 1.44 5.3L2 22l4.98-1.6a9.8 9.8 0 0 0 5.06 1.4h.01c5.43 0 9.84-4.4 9.84-9.84C21.89 6.4 17.48 2 12.04 2Zm0 17.98h-.01a8.2 8.2 0 0 1-4.16-1.14l-.3-.18-3.1 1 .83-3.03-.2-.31a8.13 8.13 0 0 1-1.25-4.35c0-4.5 3.68-8.17 8.19-8.17a8.17 8.17 0 0 1 0 16.18Z"/></svg>
+                Send on WhatsApp
+              </button>
+              <a class="btn btn--ghost btn--lg" id="send-mail" href="#">Or email us</a>
+            </div>
+            <p class="muted" style="font-size:.8rem;margin-top:14px">
+              This site has no server, so your message is composed and opened in WhatsApp or your email app —
+              nothing is stored on a website database.
+            </p>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- delivery -->
+  <section class="section section--alt" id="delivery">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <span class="eyebrow eyebrow--leaf"><span class="dot"></span> Shipping &amp; delivery</span>
+          <h2 style="margin-top:16px">Getting your order to you</h2>
+        </div>
+      </div>
+      <div class="features features--3" id="delivery-cards"></div>
+      <div class="panel" style="margin-top:24px">
+        <div class="panel__body" id="delivery-table"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- faq -->
+  <section class="section" id="faq">
+    <div class="wrap" style="max-width:860px">
+      <div class="section__head" style="justify-content:center;text-align:center">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> FAQ</span>
+          <h2 style="margin-top:16px">Questions we get every week</h2>
+        </div>
+      </div>
+      <div id="faq-list"></div>
+      <div class="notice" style="margin-top:26px">
+        <strong>Health disclaimer:</strong> information on this site is general in nature and is not medical advice.
+        These products are not intended to diagnose, treat, cure or prevent any disease. Always consult a doctor or
+        pharmacist before starting a supplement, especially if you are pregnant, nursing, taking prescription medication
+        or managing a health condition.
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<noscript><div class="wrap" style="padding:24px"><p><strong>Please enable JavaScript</strong> to use the contact form.</p></div></noscript>
+<script type="module" src="js/contact.js"></script>
+</body>
+</html>

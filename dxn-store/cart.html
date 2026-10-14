@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-MY">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Cart & Checkout — DXN Wellness Store Malaysia</title>
+<meta name="description" content="Review your DXN order, choose delivery across West or East Malaysia, and pay by card, FPX, DuitNow QR, bank transfer or cash on delivery — or confirm the order on WhatsApp.">
+<meta name="theme-color" content="#D6161C">
+<meta name="robots" content="noindex,follow">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }
+</script>
+</head>
+<body data-page="shop">
+
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="pagehead">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a><span>/</span><span>Cart</span></div>
+      <h1>Your cart &amp; checkout</h1>
+      <p>Review your items, choose delivery and payment. You can also send the whole order straight to our WhatsApp.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <!-- EMPTY STATE -->
+    <div class="empty" id="empty" hidden>
+      <h3>Your cart is empty</h3>
+      <p>Spin a few products in 3D and add something you'd like to try.</p>
+      <div class="hero__cta" style="justify-content:center;margin-top:22px">
+        <a class="btn btn--primary" href="catalogue.html">Browse the catalogue</a>
+        <a class="btn btn--ghost" href="catalogue.html?cat=bundles">See value bundles</a>
+      </div>
+    </div>
+
+    <!-- CART -->
+    <div class="cartgrid" id="cartgrid">
+      <div>
+        <section class="panel">
+          <div class="panel__head">
+            <h2>Items <span class="muted" id="line-count" style="font-weight:600"></span></h2>
+            <button class="rm" id="clear-cart">Clear cart</button>
+          </div>
+          <div class="panel__body" id="lines"></div>
+        </section>
+
+        <section class="panel" style="margin-top:22px">
+          <div class="panel__head"><h2>Delivery &amp; payment details</h2></div>
+          <div class="panel__body">
+            <form id="checkout-form" novalidate>
+
+              <fieldset class="fieldset">
+                <legend class="legend"><i>1</i> Who is this order for?</legend>
+                <div class="fields">
+                  <div class="field field--full">
+                    <label for="f-name">Full name <span class="req">*</span></label>
+                    <input id="f-name" name="name" type="text" autocomplete="name" placeholder="e.g. Nurul Aisyah binti Rahman" required>
+                    <span class="err">Please enter your full name</span>
+                  </div>
+                  <div class="field">
+                    <label for="f-phone">Mobile number <span class="req">*</span></label>
+                    <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="012-345 6789" required>
+                    <span class="err">Enter a valid Malaysian mobile number</span>
+                    <small>Used for delivery updates and our WhatsApp confirmation.</small>
+                  </div>
+                  <div class="field">
+                    <label for="f-email">Email <span class="muted" style="font-weight:600">(optional)</span></label>
+                    <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+                    <span class="err">That email doesn't look right</span>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="fieldset">
+                <legend class="legend"><i>2</i> Where should we deliver?</legend>
+                <div class="fields">
+                  <div class="field field--full">
+                    <label for="f-address">Street address <span class="req">*</span></label>
+                    <input id="f-address" name="address" type="text" autocomplete="street-address" placeholder="House no., street, taman / condo" required>
+                    <span class="err">Please enter your street address</span>
+                  </div>
+                  <div class="field">
+                    <label for="f-city">City / town <span class="req">*</span></label>
+                    <input id="f-city" name="city" type="text" autocomplete="address-level2" placeholder="Ipoh" required>
+                    <span class="err">Please enter your city</span>
+                  </div>
+                  <div class="field">
+                    <label for="f-postcode">Postcode <span class="req">*</span></label>
+                    <input id="f-postcode" name="postcode" type="text" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="31400" required>
+                    <span class="err">Enter a 5-digit Malaysian postcode</span>
+                  </div>
+                  <div class="field">
+                    <label for="f-state">State <span class="req">*</span></label>
+                    <select id="f-state" name="state" autocomplete="address-level1" required>
+                      <option value="">Choose a state…</option>
+                    </select>
+                    <span class="err">Please choose your state</span>
+                  </div>
+                  <div class="field">
+                    <label for="f-region">Delivery zone <span class="req">*</span></label>
+                    <select id="f-region" name="region">
+                      <option value="westMalaysia">West Malaysia (Semenanjung)</option>
+                      <option value="eastMalaysia">East Malaysia (Sabah / Sarawak / Labuan)</option>
+                    </select>
+                    <small id="region-eta"></small>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="fieldset">
+                <legend class="legend"><i>3</i> How would you like to pay?</legend>
+                <div class="optgrid" id="pay-options" data-opt-group="payment"></div>
+                <div id="pay-details"></div>
+              </fieldset>
+
+              <fieldset class="fieldset">
+                <legend class="legend"><i>4</i> Anything else?</legend>
+                <div class="fields">
+                  <div class="field field--full">
+                    <label for="f-notes">Order notes <span class="muted" style="font-weight:600">(optional)</span></label>
+                    <textarea id="f-notes" name="notes" placeholder="Gate code, best time to deliver, gift message…"></textarea>
+                  </div>
+                </div>
+              </fieldset>
+
+              <label class="consent">
+                <input type="checkbox" id="f-terms">
+                <span>I understand these are wellness products and not medicine, and I agree to be contacted about this order by phone, email or WhatsApp.</span>
+              </label>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <!-- SUMMARY -->
+      <aside>
+        <section class="panel panel--sticky">
+          <div class="panel__head"><h2>Order summary</h2></div>
+          <div class="panel__body">
+            <div class="shipbar" id="shipbar"></div>
+            <div class="sum" id="summary"></div>
+            <button class="btn btn--primary btn--block btn--lg" id="place-order" style="margin-top:18px">
+              Place order
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <a class="btn btn--wa btn--block" id="wa-order" href="#" target="_blank" rel="noopener" style="margin-top:10px">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.94.53 3.75 1.44 5.3L2 22l4.98-1.6a9.8 9.8 0 0 0 5.06 1.4h.01c5.43 0 9.84-4.4 9.84-9.84C21.89 6.4 17.48 2 12.04 2Zm0 17.98h-.01a8.2 8.2 0 0 1-4.16-1.14l-.3-.18-3.1 1 .83-3.03-.2-.31a8.13 8.13 0 0 1-1.25-4.35c0-4.5 3.68-8.17 8.19-8.17a8.17 8.17 0 0 1 0 16.18Z"/></svg>
+              Send order on WhatsApp
+            </a>
+            <div class="buybox__meta" style="justify-content:center;border-top:1px solid var(--line-2)">
+              <span>🔒 No card details stored</span>
+              <span>✓ Order kept on this device</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" style="margin-top:20px">
+          <div class="panel__body" style="padding:18px 20px">
+            <h3 style="font-size:.95rem;margin-bottom:12px">Delivery information</h3>
+            <div id="delivery-info" style="font-size:.84rem;color:var(--muted);line-height:1.7"></div>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <section class="section section--tight" id="suggest" hidden>
+      <div class="section__head">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> While you're here</span>
+          <h2 style="margin-top:16px">Popular add-ons</h2>
+        </div>
+      </div>
+      <div class="grid grid--3" id="suggest-grid"></div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<noscript><div class="wrap" style="padding:24px"><p><strong>Please enable JavaScript</strong> to check out.</p></div></noscript>
+<script type="module" src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-MY">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Us — DXN Wellness Store Malaysia</title>
+<meta name="description" content="An independent DXN distributor storefront in Malaysia. Genuine ganoderma products, honest advice, fast nationwide delivery, and a live 3D shop you can inspect before you buy.">
+<meta name="theme-color" content="#D6161C">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }
+</script>
+</head>
+<body data-page="about">
+
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="pagehead">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a><span>/</span><span>About</span></div>
+      <h1>Ganoderma, sold honestly.</h1>
+      <p>We're an independent DXN distributor in Malaysia. No miracle claims, no pressure — just genuine
+         product, clear pricing, and a 3D shop that lets you inspect what you're buying before you pay.</p>
+    </div>
+  </section>
+
+  <!-- story + 3D -->
+  <section class="section">
+    <div class="wrap split">
+      <div data-reveal>
+        <span class="eyebrow"><span class="dot"></span> Our approach</span>
+        <h2 style="font-size:clamp(1.8rem,3.2vw,2.5rem);margin:16px 0 14px">
+          We built the shop we'd want to buy from.
+        </h2>
+        <p class="muted" style="max-width:56ch">
+          Most supplement websites show you one flat photo and a wall of health promises. We did the opposite:
+          every product here is a real-time 3D model you can turn around, read the label on, and check the pack
+          size against what's already in your cupboard.
+        </p>
+        <div class="storylist">
+          <div class="storyitem">
+            <div class="storyitem__n">✓</div>
+            <div><h4>Genuine stock only</h4><p>Bought through our own DXN distributor account. Sealed, batch-coded, within date — and we'll show you the batch if you ask.</p></div>
+          </div>
+          <div class="storyitem">
+            <div class="storyitem__n">✓</div>
+            <div><h4>No health claims we can't back</h4><p>We describe what's in the product and how people take it. We never promise to treat, cure or prevent a disease — and neither should anyone selling these to you.</p></div>
+          </div>
+          <div class="storyitem">
+            <div class="storyitem__n">✓</div>
+            <div><h4>A real person answers</h4><p>WhatsApp goes straight to us, in Malaysia, during working hours. Not a call centre, not a bot.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="split__media" data-reveal data-delay="2">
+        <div class="viewer" id="about-viewer" style="height:480px">
+          <div class="viewer__badge" style="color:var(--leaf)">SPIN ME</div>
+          <div class="viewer__hint">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11V6a2 2 0 1 1 4 0v5"/><path d="M13 11V5.5a2 2 0 1 1 4 0V13"/></svg>
+            Drag to rotate · scroll to zoom
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- what is ganoderma -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <span class="eyebrow eyebrow--leaf"><span class="dot"></span> The ingredient</span>
+          <h2 style="margin-top:16px">What exactly is Ganoderma?</h2>
+          <p>Ganoderma lucidum — lingzhi in Chinese, reishi in Japanese — is a wood-decay fungus that has been
+             recorded in traditional Chinese medicine for thousands of years. It grows as a flat, lacquered-looking
+             bracket with a reddish-brown cap.</p>
+        </div>
+      </div>
+      <div class="features" id="ganoderma-facts"></div>
+    </div>
+  </section>
+
+  <!-- DXN parts explained -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Know your formulas</span>
+          <h2 style="margin-top:16px">RG, GL and Ganocelium — what's the difference?</h2>
+          <p>The three most-asked-about DXN products use three different parts of the same mushroom.</p>
+        </div>
+      </div>
+      <div class="features features--3" id="formulas"></div>
+    </div>
+  </section>
+
+  <!-- timeline -->
+  <section class="section section--alt">
+    <div class="wrap split">
+      <div data-reveal>
+        <span class="eyebrow"><span class="dot"></span> Our story</span>
+        <h2 style="font-size:clamp(1.7rem,3vw,2.3rem);margin:16px 0 8px">How this store came about</h2>
+        <p class="muted">Update these dates with your own — they live in <code>js/about.js</code>.</p>
+        <div class="timeline" id="timeline"></div>
+      </div>
+      <div data-reveal data-delay="2">
+        <div class="panel">
+          <div class="panel__head"><h2>Store details</h2></div>
+          <div class="panel__body" id="store-details"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- stats -->
+  <section class="section section--dark section--tight">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat" data-reveal><b data-count="14" data-suffix="+">0</b><span>DXN products stocked</span></div>
+        <div class="stat" data-reveal data-delay="1"><b data-count="2600" data-suffix="+">0</b><span>Orders delivered</span></div>
+        <div class="stat" data-reveal data-delay="2"><b data-count="16" data-suffix="">0</b><span>States &amp; territories served</span></div>
+        <div class="stat" data-reveal data-delay="3"><b data-count="100" data-suffix="%">0</b><span>Genuine DXN stock</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- membership -->
+  <section class="section" id="membership">
+    <div class="wrap">
+      <div class="cta" data-reveal>
+        <h2>Want member pricing?</h2>
+        <p>DXN members buy at distributor price and can earn from sharing the products they already use.
+           We'll register you, explain the plan honestly — including what it isn't — and let you decide.</p>
+        <div class="cta__row">
+          <a class="btn btn--ghost btn--lg" id="member-wa" href="#" target="_blank" rel="noopener">Ask about membership</a>
+          <a class="btn btn--dark btn--lg" href="catalogue.html">Just shop for now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<noscript><div class="wrap" style="padding:24px"><p><strong>Please enable JavaScript</strong> to view this page.</p></div></noscript>
+<script type="module" src="js/about.js"></script>
+</body>
+</html>

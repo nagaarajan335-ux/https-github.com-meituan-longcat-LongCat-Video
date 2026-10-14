@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-MY">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop DXN Products Malaysia — Live 3D Catalogue</title>
+<meta name="description" content="Browse the full DXN catalogue in live 3D: Lingzhi Coffee, Zhi Tea, RG & GL capsules, Ganocelium, Spirulina, Ganozhi toothpaste and more. Malaysian prices in Ringgit, nationwide delivery.">
+<meta name="theme-color" content="#D6161C">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }
+</script>
+</head>
+<body data-page="shop">
+
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="pagehead">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a><span>/</span><span>Catalogue</span></div>
+      <h1 id="page-title">All products</h1>
+      <p id="page-blurb">Every item is rendered live in 3D from its real packaging dimensions — drag to spin, then add to cart.</p>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div class="wrap toolbar__in">
+      <div class="filters" id="filters" role="tablist" aria-label="Product categories"></div>
+      <label class="resultcount" for="sort"><span id="count">0</span> products</label>
+      <select class="sortsel" id="sort" aria-label="Sort products">
+        <option value="popular">Most popular</option>
+        <option value="priceAsc">Price: low to high</option>
+        <option value="priceDesc">Price: high to low</option>
+        <option value="rating">Highest rated</option>
+        <option value="name">Name: A – Z</option>
+      </select>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="grid" id="results"></div>
+      <div class="empty" id="empty" hidden>
+        <h3>Nothing matched that search</h3>
+        <p>Try a different keyword, or clear the filters to see the whole catalogue.</p>
+        <div class="hero__cta" style="justify-content:center;margin-top:20px">
+          <a class="btn btn--primary" href="catalogue.html">Clear filters</a>
+          <a class="btn btn--ghost" href="contact.html">Ask us on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta" data-reveal>
+        <h2>Can't find what you're after?</h2>
+        <p>We stock the full DXN Malaysia range. If it's not listed here, message us — we can usually source it within a few working days.</p>
+        <div class="cta__row">
+          <a class="btn btn--ghost btn--lg" id="cta-wa" href="#" target="_blank" rel="noopener">Ask on WhatsApp</a>
+          <a class="btn btn--dark btn--lg" href="contact.html">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<noscript><div class="wrap" style="padding:24px"><p><strong>Please enable JavaScript</strong> to browse the catalogue.</p></div></noscript>
+<script type="module" src="js/catalogue.js"></script>
+</body>
+</html>

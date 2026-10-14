@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en-MY">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DXN Wellness Store Malaysia — Genuine Ganoderma Products in Live 3D</title>
+<meta name="description" content="Shop genuine DXN products online in Malaysia — Lingzhi Coffee, RG & GL capsules, Ganozhi toothpaste and more. Spin every product in live 3D before you buy. Free shipping over RM200, WhatsApp ordering, nationwide delivery.">
+<meta name="theme-color" content="#D6161C">
+<link rel="canonical" href="./">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DXN Wellness Store Malaysia — Genuine Ganoderma Products in Live 3D">
+<meta property="og:description" content="Spin every DXN product in live 3D before you buy. Lingzhi Coffee, RG, GL, Ganozhi and more, delivered across Malaysia.">
+<meta property="og:locale" content="en_MY">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }
+</script>
+</head>
+<body data-page="home">
+
+<div id="site-header"></div>
+
+<main id="main">
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero">
+    <div class="wrap hero__in">
+      <div class="hero__copy">
+        <span class="eyebrow"><span class="dot"></span> Genuine DXN stock · Malaysia</span>
+        <h1>Turn it, study it,<br><span class="grad">then buy it.</span></h1>
+        <p class="hero__lead">
+          Every product on this store is rendered live in 3D — drag to spin the real packaging,
+          read the label, check the size. No stock photos, no surprises. Ordered today,
+          shipped across Peninsular Malaysia, Sabah and Sarawak.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--primary btn--lg" href="catalogue.html">
+            Shop the catalogue
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#bestsellers">See bestsellers</a>
+        </div>
+        <div class="hero__stats">
+          <div class="hero__stat"><b data-count="14" data-suffix="+">0</b><span>Products in stock</span></div>
+          <div class="hero__stat"><b data-count="2600" data-suffix="+">0</b><span>Orders delivered</span></div>
+          <div class="hero__stat"><b data-count="4" data-suffix="hr">0</b><span>Same-day dispatch</span></div>
+        </div>
+      </div>
+
+      <div class="hero__stage">
+        <div class="viewer" id="hero-viewer">
+          <div class="viewer__hint">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11V6a2 2 0 1 1 4 0v5"/><path d="M13 11V5.5a2 2 0 1 1 4 0V13"/><path d="M17 11.5a2 2 0 1 1 4 0V15a6 6 0 0 1-6 6h-2.2a6 6 0 0 1-4.6-2.1L4 14.2a2 2 0 0 1 3-2.6l2 2.2"/></svg>
+            Drag to rotate · scroll to zoom
+          </div>
+          <div class="viewer__badge" id="hero-badge">LIVE 3D</div>
+          <div class="viewer__hud">
+            <div class="viewer__chips" id="hero-chips"></div>
+            <div class="viewer__tools">
+              <button class="toolbtn" id="btn-spin" title="Pause / resume rotation" aria-label="Pause or resume rotation">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg>
+              </button>
+              <button class="toolbtn" id="btn-zoomin" title="Zoom in" aria-label="Zoom in">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+              <button class="toolbtn" id="btn-zoomout" title="Zoom out" aria-label="Zoom out">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"/></svg>
+              </button>
+              <button class="toolbtn" id="btn-reset" title="Reset view" aria-label="Reset view">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 4.5V10H9"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="hero__switch" id="hero-switch"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ TRUST STRIP ══════════ -->
+  <section class="section section--tight" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="features" id="trust-strip"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ CATEGORIES ══════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <span class="eyebrow eyebrow--leaf"><span class="dot"></span> Browse by range</span>
+          <h2 style="margin-top:16px">Four ranges. One wellness routine.</h2>
+          <p>From the morning cup to the evening capsule — everything DXN, in one place, priced in Ringgit.</p>
+        </div>
+        <a class="btn btn--ghost" href="catalogue.html">View all products</a>
+      </div>
+      <div class="cats" id="cats"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ BESTSELLERS ══════════ -->
+  <section class="section section--alt" id="bestsellers">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Most ordered</span>
+          <h2 style="margin-top:16px">Bestsellers this month</h2>
+          <p>Drag any product to spin it in 3D. Tap the ＋ to add it straight to your cart.</p>
+        </div>
+        <a class="btn btn--outline" href="catalogue.html?sort=popular">See everything</a>
+      </div>
+      <div class="grid" id="featured"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ WHY GANODERMA (split + 3D) ══════════ -->
+  <section class="section">
+    <div class="wrap split">
+      <div class="split__media" data-reveal>
+        <div class="viewer" id="story-viewer">
+          <div class="viewer__badge" style="color:var(--leaf)">RG + GL</div>
+          <div class="viewer__hud">
+            <div class="viewer__chips">
+              <button class="chipview is-active" data-story="rg-capsules">RG</button>
+              <button class="chipview" data-story="gl-capsules">GL</button>
+              <button class="chipview" data-story="ganocelium">Ganocelium</button>
+            </div>
+            <div class="viewer__tools">
+              <button class="toolbtn" data-story-view="front" title="Front view" aria-label="Front view">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="5" width="14" height="14" rx="3"/></svg>
+              </button>
+              <button class="toolbtn" data-story-view="three" title="3/4 view" aria-label="Three quarter view">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3.5 20 8v8l-8 4.5L4 16V8l8-4.5Z"/><path d="M12 12 20 8M12 12v8.5M12 12 4 8"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-reveal data-delay="2">
+        <span class="eyebrow"><span class="dot"></span> Why Ganoderma</span>
+        <h2 style="font-size:clamp(1.8rem,3.2vw,2.5rem);margin:16px 0 14px">
+          The 5,000-year-old mushroom, in a capsule you can actually take every day.
+        </h2>
+        <p class="muted" style="max-width:56ch">
+          Ganoderma lucidum — lingzhi, or reishi — has been used in traditional Chinese medicine for
+          millennia. DXN cultivates it organically in Malaysia, from spore to shelf, and controls every
+          step so what lands on your table is consistent batch after batch.
+        </p>
+        <div class="storylist">
+          <div class="storyitem">
+            <div class="storyitem__n">1</div>
+            <div><h4>Grown organically in Malaysia</h4><p>Own plantations, no pesticides, no chemical fertiliser — harvested at the exact maturity each formula needs.</p></div>
+          </div>
+          <div class="storyitem">
+            <div class="storyitem__n">2</div>
+            <div><h4>Whole-plant processing</h4><p>Fruiting body for RG, spore and mycelium for GL, concentrated mycelium for Ganocelium. Different parts, different formulas.</p></div>
+          </div>
+          <div class="storyitem">
+            <div class="storyitem__n">3</div>
+            <div><h4>Certified and traceable</h4><p>Halal-certified manufacturing with GMP, ISO and HACCP controls. Every bottle carries a batch code.</p></div>
+          </div>
+        </div>
+        <div class="hero__cta" style="margin-top:28px">
+          <a class="btn btn--leaf" href="product.html?id=starter-pack">Get the starter pack</a>
+          <a class="btn btn--ghost" href="about.html">Our story</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ STATS ══════════ -->
+  <section class="section section--dark section--tight">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat" data-reveal><b data-count="30" data-suffix="+">0</b><span>Years of ganoderma expertise</span></div>
+        <div class="stat" data-reveal data-delay="1"><b data-count="15" data-suffix="k">0</b><span>Happy customers served</span></div>
+        <div class="stat" data-reveal data-delay="2"><b data-count="98" data-suffix="%">0</b><span>Repeat-order rate</span></div>
+        <div class="stat" data-reveal data-delay="3"><b data-count="24" data-suffix="h">0</b><span>Dispatch from Ipoh, Perak</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ HOW IT WORKS ══════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <span class="eyebrow eyebrow--leaf"><span class="dot"></span> Ordering</span>
+          <h2 style="margin-top:16px">Three steps, then it's on its way</h2>
+        </div>
+      </div>
+      <div class="features" id="steps"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ TESTIMONIALS ══════════ -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Reviews</span>
+          <h2 style="margin-top:16px">What customers across Malaysia say</h2>
+        </div>
+      </div>
+      <div class="testis" id="testis"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ CTA ══════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="cta" data-reveal>
+        <h2>Not sure where to start?</h2>
+        <p>Message us on WhatsApp and we'll recommend a routine based on your age, your goals and your budget — no pressure, no hard sell.</p>
+        <div class="cta__row">
+          <a class="btn btn--ghost btn--lg" id="cta-wa" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          <a class="btn btn--dark btn--lg" href="catalogue.html?cat=bundles">Browse bundles</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<noscript><div class="wrap" style="padding:24px"><p><strong>Please enable JavaScript</strong> to view the 3D product showcase and shop this store.</p></div></noscript>
+
+<script type="module" src="js/home.js"></script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Store",
+  "name":"DXN Wellness Store",
+  "description":"Genuine DXN ganoderma products sold online in Malaysia with live 3D product views.",
+  "currenciesAccepted":"MYR",
+  "paymentAccepted":"Credit card, FPX, DuitNow, bank transfer, cash on delivery",
+  "address":{"@type":"PostalAddress","addressCountry":"MY","addressLocality":"Ipoh","addressRegion":"Perak"}
+}
+</script>
+</body>
+</html>
