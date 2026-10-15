@@ -198,6 +198,29 @@ def zoompan_expr(move, n_frames):
     return f"z='1.0+0.10*on/{N}':{c}"
 
 
+KEYWORDS = {"death", "dead", "dying", "die", "corpse", "rotting", "shadow", "scream", "blood",
+            "virus", "prion", "prions", "rabies", "insomnia", "paralysis", "void", "jump",
+            "bite", "missing", "vanished", "radiation", "tongue", "crushed", "starved", "hum",
+            "buzzer", "buzzing", "frequency", "hertz", "intruder", "visitor", "locked", "gone",
+            "fatal", "inherited", "delusion", "cemetery", "awake", "silent", "silence", "counting",
+            "dread", "misfolded", "protein", "eyeball", "vibrate", "hauntings", "tent", "barefoot",
+            "blizzard", "shed", "plane", "rehearses", "lies", "lying", "splitting", "disgust",
+            "urge", "desire", "jolt", "water"}
+YELLOW, WHITE, RED = "&H0000FFFF&", "&H00FFFFFF&", "&H004545FF&"
+
+
+def highlight(chunk, base):
+    """pop the first horror keyword of a caption chunk in yellow"""
+    toks = chunk.split(" ")
+    for i, t in enumerate(toks):
+        core = t.strip(".,!?…—")
+        if core.lower() in KEYWORDS and core:
+            pre, suf = t[:t.index(core)], t[t.index(core) + len(core):]
+            toks[i] = f"{pre}{{\\c{YELLOW}}}{core}{{\\c{base}}}{suf}"
+            break
+    return " ".join(toks)
+
+
 def make_flash(path):
     a = np.random.default_rng(3).integers(40, 235, (H // 2, W // 2), dtype=np.uint8)
     im = Image.fromarray(a, "L").resize((W, H), Image.NEAREST).convert("RGB")
@@ -316,8 +339,17 @@ def build(v):
             expected.append(dur_full * acc / tot)
         gaps = [g for g in silence_gaps(x, min_len=0.18) if 0.5 < g < dur_full - 0.5]
         bounds, last = [], 0.0
-        for e in expected:
-            cand = [g for g in gaps if last + 1.0 < g < e + 1.6]
+        for k, e in enumerate(expected):
+            chars_k = chars[k]
+            cand = []
+            for g in gaps:
+                if not (last + 1.0 < g < e + 1.6):
+                    continue
+                if chars_k / max(0.3, g - last) > 19.5:          # slice too short for its words
+                    continue
+                if k == len(expected) - 1 and chars[-1] / max(0.3, dur_full - g) > 19.5:
+                    continue
+                cand.append(g)
             b = min(cand, key=lambda g: abs(g - e)) if cand else e
             bounds.append(b); last = b
         edges = [0.0] + bounds + [dur_full]
@@ -382,7 +414,8 @@ def build(v):
         times = align_chunks(i["x"], chunks, i["dur"])
         for (a, b), c in zip(times, chunks):
             style = "CAPRED" if (s["key"] == "hook" or c.rstrip(".").isdigit()) else "CAP"
-            ev.append((style, o + a, o + b, "{\\fad(90,90)}" + c.upper()))
+            base = RED if style == "CAPRED" else WHITE
+            ev.append((style, o + a, o + b, "{\\fad(90,90)}" + highlight(c.upper(), base)))
     ass = os.path.join(OUT, f"{v['id']}.ass")
     build_ass(ass, ev)
 

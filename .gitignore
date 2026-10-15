@@ -6,3 +6,4 @@ horror-shorts/out/*.png
 horror-shorts/audio/*.mp3
 horror-shorts/audio/*.wav
 .venv/
+__pycache__/

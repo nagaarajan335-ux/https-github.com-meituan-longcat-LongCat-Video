@@ -165,6 +165,7 @@ uvb 76, the buzzer, numbers station, taos hum, infrasound, 18.98 hz, fear freque
 
 ## EPISODE 3 — 3 Things That Can Happen To You While You Sleep 🛏️
 
+**Runtime:** 0:57.0  •  **File:** `out/v3_while-you-sleep.mp4`  •  **Thumbnails:** `out/thumb_v3_9x16.png`, `out/thumb_v3_16x9.png`
 
 ### 🪝 Viral hook (first 1.5 s)
 - **On screen (frame 1):** “WHAT WAITS / WHILE YOU SLEEP”
@@ -172,23 +173,23 @@ uvb 76, the buzzer, numbers station, taos hum, infrasound, 18.98 hz, fear freque
 
 ### 🎬 Script + on-screen text (with timings)
 
-**[0:00.0 → 0:00.0] HOOK** — visual: `v3_01_hook_bed.png` (push_in)
+**[0:00.0 → 0:06.0] HOOK** — visual: `v3_01_hook_bed.png` (push_in)
 - ON SCREEN: WHAT WAITS WHILE YOU SLEEP
 - VO: You will spend twenty-six years of your life asleep. Here is what is waiting in there with you.
 
-**[0:00.0 → 0:00.0] F1** — visual: `v3_02_paralysis.png` (pan_up)
+**[0:06.0 → 0:22.0] F1** — visual: `v3_02_paralysis.png` (pan_up)
 - ON SCREEN: #1 SLEEP PARALYSIS
 - VO: One. Sleep paralysis. Your body is chemically locked so you can't act out dreams. Sometimes your mind wakes first. You can't move, can't scream, and a shadow figure stands at the foot of the bed. Every culture on Earth reports the same visitor.
 
-**[0:00.0 → 0:00.0] F2** — visual: `v3_03_insomnia.png` (push_in_fast)
+**[0:22.0 → 0:37.3] F2** — visual: `v3_03_insomnia.png` (push_in_fast)
 - ON SCREEN: #2 FATAL FAMILIAL INSOMNIA
 - VO: Two. Fatal familial insomnia. One night, sleep simply stops coming. Not harder. Gone. A misfolded protein eats the part of your brain that lets you sleep. Eighteen months later, you die awake. There is no treatment. It is inherited.
 
-**[0:00.0 → 0:00.0] F3** — visual: `v3_04_drop.png` (push_out)
+**[0:37.3 → 0:51.9] F3** — visual: `v3_04_drop.png` (push_out)
 - ON SCREEN: #3 THE DROP
 - VO: Three. The drop. That jolt right as you fall asleep, like falling from a height. Your muscles fire as your heart rate crashes. One theory: your brain thinks you're dying, and jolts you back. Every night, it considers letting you go.
 
-**[0:00.0 → 0:00.0] CTA** — visual: `v3_01_hook_bed.png` (push_in)
+**[0:51.9 → 0:56.3] CTA** — visual: `v3_01_hook_bed.png` (push_in)
 - ON SCREEN: FOLLOW — PT.2 TOMORROW
 - VO: Follow. Tomorrow: three places people walked into and never left.
 
@@ -233,6 +234,7 @@ sleep paralysis, shadow people, hat man, fatal familial insomnia, prion disease,
 
 ## EPISODE 4 — 3 Places People Walked Into And Never Walked Out 🏔️
 
+**Runtime:** 0:58.0  •  **File:** `out/v4_never-walked-out.mp4`  •  **Thumbnails:** `out/thumb_v4_9x16.png`, `out/thumb_v4_16x9.png`
 
 ### 🪝 Viral hook (first 1.5 s)
 - **On screen (frame 1):** “THEY CUT THEIR WAY OUT / OF THEIR OWN TENT”
@@ -240,23 +242,23 @@ sleep paralysis, shadow people, hat man, fatal familial insomnia, prion disease,
 
 ### 🎬 Script + on-screen text (with timings)
 
-**[0:00.0 → 0:00.0] HOOK** — visual: `v4_01_hook_tent.png` (push_in)
+**[0:00.0 → 0:08.3] HOOK** — visual: `v4_01_hook_tent.png` (push_in)
 - ON SCREEN: THEY CUT THEIR WAY OUT OF THEIR OWN TENT
 - VO: Nine hikers cut their way out of their own tent, barefoot, in minus thirty degrees. Three places people entered and never left.
 
-**[0:00.0 → 0:00.0] F1** — visual: `v4_02_dyatlov.png` (pan_down)
+**[0:08.3 → 0:26.5] F1** — visual: `v4_02_dyatlov.png` (pan_down)
 - ON SCREEN: #1 DYATLOV PASS, 1959
 - VO: One. Dyatlov Pass, nineteen fifty-nine. The tent was slashed from the inside. Nine bodies in the snow, some with crushed chests and no external wounds. One was missing her tongue. Their clothes carried radiation. The case was reopened in twenty-nineteen. Then quietly closed again.
 
-**[0:00.0 → 0:00.0] F2** — visual: `v4_03_yuba.png` (push_out)
+**[0:26.5 → 0:40.6] F2** — visual: `v4_03_yuba.png` (push_out)
 - ON SCREEN: #2 THE YUBA COUNTY FIVE
 - VO: Two. The Yuba County Five, nineteen seventy-eight. Five men abandoned a perfectly good car in a blizzard and walked into the forest. One was found months later in a shed, surrounded by food he never ate. He had starved anyway.
 
-**[0:00.0 → 0:00.0] F3** — visual: `v4_04_bennington.png` (push_in_fast)
+**[0:40.6 → 0:54.6] F3** — visual: `v4_04_bennington.png` (push_in_fast)
 - ON SCREEN: #3 THE BENNINGTON TRIANGLE
 - VO: Three. The Bennington Triangle. Between nineteen forty-five and nineteen fifty, five people vanished within ten miles of one Vermont mountain. A search plane with ten people aboard disappeared looking for them. It was never found either.
 
-**[0:00.0 → 0:00.0] CTA** — visual: `v4_01_hook_tent.png` (push_in)
+**[0:54.6 → 0:57.3] CTA** — visual: `v4_01_hook_tent.png` (push_in)
 - ON SCREEN: FOLLOW — PT.2 GOES UNDERWATER
 - VO: Follow. Part two goes underwater.
 
@@ -302,6 +304,7 @@ dyatlov pass, yuba county five, bennington triangle, missing persons, unexplaine
 
 ## EPISODE 5 — 3 Body Horror Facts That Are 100% Real 🧬
 
+**Runtime:** 1:02.8  •  **File:** `out/v5_real-body-horror.mp4`  •  **Thumbnails:** `out/thumb_v5_9x16.png`, `out/thumb_v5_16x9.png`
 
 ### 🪝 Viral hook (first 1.5 s)
 - **On screen (frame 1):** “THIS PROTEIN / CANNOT BE KILLED”
@@ -309,23 +312,23 @@ dyatlov pass, yuba county five, bennington triangle, missing persons, unexplaine
 
 ### 🎬 Script + on-screen text (with timings)
 
-**[0:00.0 → 0:00.0] HOOK** — visual: `v5_01_hook_prion.png` (push_in)
+**[0:00.0 → 0:07.9] HOOK** — visual: `v5_01_hook_prion.png` (push_in)
 - ON SCREEN: THIS PROTEIN CANNOT BE KILLED
 - VO: This protein cannot be killed. Not by boiling, bleach, or radiation. Three body horror facts that are completely real.
 
-**[0:00.0 → 0:00.0] F1** — visual: `v5_02_lab.png` (pan_up)
+**[0:07.9 → 0:24.5] F1** — visual: `v5_02_lab.png` (pan_up)
 - ON SCREEN: #1 PRIONS
 - VO: One. Prions. Not a virus, not a bacteria. A protein folded wrong, that teaches your proteins to fold wrong too. It survives autoclaves, formaldehyde, and incineration. It can sleep in your body for thirty years. Then it wakes up. One hundred percent fatal.
 
-**[0:00.0 → 0:00.0] F2** — visual: `v5_03_rabies.png` (push_out)
+**[0:24.5 → 0:42.3] F2** — visual: `v5_03_rabies.png` (push_out)
 - ON SCREEN: #2 RABIES
 - VO: Two. Rabies. Once symptoms start, it is almost always fatal. The virus rewires your brain to fear water, so you can't wash it off, and to bite, so it can travel. The scariest part isn't the virus. It's how well it knows your behaviour.
 
-**[0:00.0 → 0:00.0] F3** — visual: `v5_04_cotard.png` (push_in_fast)
+**[0:42.3 → 0:59.1] F3** — visual: `v5_04_cotard.png` (push_in_fast)
 - ON SCREEN: #3 COTARD'S DELUSION
 - VO: Three. Cotard's delusion. People who are certain they are already dead. That their organs are rotting, that they don't need to eat. Brain scans show the face-recognition circuit disconnected from emotion. One patient asked to be taken to the cemetery. To feel at home.
 
-**[0:00.0 → 0:00.0] CTA** — visual: `v5_01_hook_prion.png` (push_in)
+**[0:59.1 → 1:02.1] CTA** — visual: `v5_01_hook_prion.png` (push_in)
 - ON SCREEN: FOLLOW — PT.3 IS YOUR HOUSE
 - VO: Follow. Part three is about your house.
 
