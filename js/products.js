@@ -17,6 +17,7 @@ const PRODUCTS = [
   /* ═══════════════ COFFEE & BEVERAGES ═══════════════ */
   {
     id: "lingzhi-coffee-3in1",
+    photo: "assets/photos/lingzhi-coffee-3in1.jpg",
     name: "Lingzhi Coffee 3 in 1",
     short: "Lingzhi Coffee 3 in 1",
     category: "beverages",
@@ -49,6 +50,7 @@ const PRODUCTS = [
 
   {
     id: "lingzhi-coffee-black",
+    photo: "assets/photos/lingzhi-coffee-black.jpg",
     name: "Lingzhi Black Coffee",
     short: "Lingzhi Black Coffee",
     category: "beverages",
@@ -81,6 +83,7 @@ const PRODUCTS = [
 
   {
     id: "zhi-tea",
+    photo: "assets/photos/zhi-tea.jpg",
     name: "DXN Zhi Tea",
     short: "Zhi Tea",
     category: "beverages",
@@ -113,6 +116,7 @@ const PRODUCTS = [
 
   {
     id: "cocozhi",
+    photo: "assets/photos/cocozhi.jpg",
     name: "DXN Cocozhi",
     short: "Cocozhi",
     category: "beverages",
@@ -145,6 +149,7 @@ const PRODUCTS = [
 
   {
     id: "spirulina-cereal",
+    photo: "assets/photos/spirulina-cereal.jpg",
     name: "DXN Spirulina Cereal",
     short: "Spirulina Cereal",
     category: "beverages",
@@ -178,6 +183,7 @@ const PRODUCTS = [
   /* ═══════════════ HEALTH SUPPLEMENTS ═══════════════ */
   {
     id: "rg-capsules",
+    photo: "assets/photos/rg-capsules.jpg",
     name: "DXN RG (Reishi Gano)",
     short: "RG Capsules",
     category: "supplements",
@@ -210,6 +216,7 @@ const PRODUCTS = [
 
   {
     id: "gl-capsules",
+    photo: "assets/photos/gl-capsules.jpg",
     name: "DXN GL (Ganolium)",
     short: "GL Capsules",
     category: "supplements",
@@ -242,6 +249,7 @@ const PRODUCTS = [
 
   {
     id: "ganocelium",
+    photo: "assets/photos/ganocelium.jpg",
     name: "DXN Ganocelium",
     short: "Ganocelium",
     category: "supplements",
@@ -274,6 +282,7 @@ const PRODUCTS = [
 
   {
     id: "spirulina-plus",
+    photo: "assets/photos/spirulina-plus.jpg",
     name: "DXN Spirulina Plus",
     short: "Spirulina Plus",
     category: "supplements",
@@ -306,6 +315,7 @@ const PRODUCTS = [
 
   {
     id: "lions-mane",
+    photo: "assets/photos/lions-mane.jpg",
     name: "DXN Lion's Mane",
     short: "Lion's Mane",
     category: "supplements",
@@ -339,6 +349,7 @@ const PRODUCTS = [
   /* ═══════════════ PERSONAL CARE ═══════════════ */
   {
     id: "ganozhi-toothpaste",
+    photo: "assets/photos/ganozhi-toothpaste.jpg",
     name: "Ganozhi Toothpaste",
     short: "Ganozhi Toothpaste",
     category: "personal-care",
@@ -371,6 +382,7 @@ const PRODUCTS = [
 
   {
     id: "ganozhi-shampoo",
+    photo: "assets/photos/ganozhi-shampoo.jpg",
     name: "Ganozhi Daily Care Shampoo",
     short: "Ganozhi Shampoo",
     category: "personal-care",
@@ -403,6 +415,7 @@ const PRODUCTS = [
 
   {
     id: "ganozhi-bodywash",
+    photo: "assets/photos/ganozhi-bodywash.jpg",
     name: "Ganozhi Daily Care Body Wash",
     short: "Ganozhi Body Wash",
     category: "personal-care",
@@ -436,6 +449,7 @@ const PRODUCTS = [
   /* ═══════════════ BUNDLES ═══════════════ */
   {
     id: "starter-pack",
+    photo: "assets/photos/starter-pack.jpg",
     name: "DXN Starter Wellness Pack",
     short: "Starter Pack",
     category: "bundles",
@@ -468,6 +482,7 @@ const PRODUCTS = [
 
   {
     id: "coffee-value-carton",
+    photo: "assets/photos/coffee-value-carton.jpg",
     name: "Lingzhi Coffee 3 in 1 — Value Carton",
     short: "Coffee Value Carton",
     category: "bundles",

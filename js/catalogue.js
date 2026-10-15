@@ -2,7 +2,7 @@
    CATALOGUE PAGE — filters, search, sort, live 3D grid
    ============================================================ */
 
-import { init, mountStages, productCard, qs, param, CATEGORIES, PRODUCTS, HAS_GL } from "./app.js";
+import { init, mountStages, productCard, bindSpinButtons, qs, param, CATEGORIES, PRODUCTS, HAS_GL } from "./app.js";
 import { searchProducts, waLink, getProduct } from "./store.js";
 import { mountReveal, bindAddButtons } from "./ui.js";
 
@@ -56,6 +56,7 @@ function render() {
   qs("#count").textContent = list.length;
 
   mountStages(host);
+  bindSpinButtons(host);
   bindAddButtons(host);
   mountReveal(host);
   push();

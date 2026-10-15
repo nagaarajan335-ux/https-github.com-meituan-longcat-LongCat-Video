@@ -2,7 +2,7 @@
    CART + CHECKOUT
    ============================================================ */
 
-import { init, mountStages, productCard, qs, qsa, bindOptions, C } from "./app.js";
+import { init, mountStages, productCard, bindSpinButtons, qs, qsa, bindOptions, C } from "./app.js";
 import {
   cartLines, setQty, removeFromCart, clearCart, totals, money, createOrder,
   orderToWhatsApp, waLink, PAYMENT_LABELS, setPrefs, getPrefs, getProduct
@@ -421,6 +421,7 @@ function renderSuggestions() {
   const list = picks.length ? picks : ["starter-pack", "ganozhi-toothpaste", "zhi-tea"].map(getProduct).filter(Boolean);
   qs("#suggest-grid").innerHTML = list.map((p, i) => productCard(p, { delay: i + 1 })).join("");
   mountStages(qs("#suggest-grid"));
+  bindSpinButtons(qs("#suggest-grid"));
   bindAddButtons(qs("#suggest-grid"));
   mountReveal(qs("#suggest-grid"));
 }

@@ -2,7 +2,7 @@
    HOME PAGE
    ============================================================ */
 
-import { init, makeViewer, mountStages, productCard, categoryCard, qs, qsa, C, PRODUCTS, CATEGORIES } from "./app.js";
+import { init, makeViewer, mountStages, productCard, categoryCard, bindSpinButtons, qs, qsa, C, PRODUCTS, CATEGORIES } from "./app.js";
 import { searchProducts, waLink, money } from "./store.js";
 import { thumbHTML } from "./thumb.js";
 import { stars } from "./ui.js";
@@ -32,6 +32,7 @@ qs("#cats").innerHTML = CATEGORIES.map(categoryCard).join("");
 /* ---------- featured products ---------- */
 const featured = searchProducts("", "all", "popular").slice(0, 8);
 qs("#featured").innerHTML = featured.map((p, i) => productCard(p, { delay: (i % 4) + 1 })).join("");
+bindSpinButtons(qs("#featured"));
 
 /* ---------- steps ---------- */
 const STEPS = [
@@ -78,26 +79,63 @@ qs("#cta-wa").href = waLink("Hi! I'm not sure which DXN products suit me. Can yo
 const HERO_IDS = ["lingzhi-coffee-3in1", "rg-capsules", "ganozhi-toothpaste", "zhi-tea", "spirulina-plus"];
 const heroProducts = HERO_IDS.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
 
+/* ===== photo-led hero, with the 3D scene on demand ===== */
+let heroCurrent = heroProducts[0];
+let heroViewer = null;
 const heroEl = qs("#hero-viewer");
-const heroViewer = makeViewer(heroEl, { product: heroProducts[0], floorColor: "#efe9e0", accent: "#d6161c" });
-if (heroViewer) heroViewer.load(heroProducts[0]);
 
-/* product switcher under the viewer */
+const ensureHeroViewer = () => {
+  if (heroViewer) return heroViewer;
+  heroViewer = makeViewer(heroEl, { product: heroCurrent, floorColor: "#efe9e0", accent: "#d6161c" });
+  if (heroViewer) heroViewer.load(heroCurrent);
+  return heroViewer;
+};
+
+const heroView = (mode) => {
+  const is3d = mode === "3d";
+  qs("#hero-stage")?.classList.toggle("is-3d", is3d);
+  qs("#hero-figure")?.classList.toggle("is-hidden", is3d);
+  if (heroEl) heroEl.hidden = !is3d;
+  qsa("[data-heroview]").forEach(b => b.classList.toggle("is-active", b.dataset.heroview === mode));
+  if (is3d) ensureHeroViewer();
+};
+
+const showHero = (p) => {
+  heroCurrent = p;
+  const img = qs("#hero-photo");
+  if (img) {
+    img.classList.remove("is-missing");
+    img.alt = `${p.name} — official DXN product photo`;
+    img.src = p.photo || "";
+  }
+  const capN = qs("#hero-cap-name"); if (capN) capN.textContent = p.name;
+  const capS = qs("#hero-cap-sub"); if (capS) capS.textContent = `${p.packSize} · made in Malaysia`;
+  const badge = qs("#hero-badge"); if (badge) badge.textContent = "360° · " + p.short.toUpperCase();
+  if (heroViewer) heroViewer.load(p);
+  capN?.animate?.([{ opacity: 0, transform: "translateY(-6px)" }, { opacity: 1, transform: "none" }], { duration: 340, easing: "ease-out" });
+};
+
+/* if a product has no photo on file yet, fall back to its 3D model */
+qs("#hero-photo")?.addEventListener("error", () => heroView("3d"));
+const heroArt = qs("#hero-figure-art");
+if (heroArt) heroArt.innerHTML = thumbHTML(heroCurrent, { size: "md", label: false });
+
+qsa("[data-heroview]").forEach(b => b.addEventListener("click", () => heroView(b.dataset.heroview)));
+
+/* product switcher */
 const heroSwitch = qs("#hero-switch");
 if (heroSwitch) heroSwitch.innerHTML = heroProducts.map((p, i) => `
-  <button class="sw ${i === 0 ? "is-active" : ""}" data-hero="${p.id}" title="${p.name} — ${money(p.price)}" aria-label="Show ${p.name} in 3D">
-    ${thumbHTML(p, { size: "sm", label: false })}
+  <button class="sw ${i === 0 ? "is-active" : ""}" data-hero="${p.id}" title="${p.name} — ${money(p.price)}" aria-label="Show ${p.name}">
+    <span class="sw__art">${thumbHTML(p, { size: "sm", label: false })}</span>
+    <img class="sw__img" src="${p.photo || ""}" alt="" loading="lazy" decoding="async" onerror="this.remove()">
   </button>`).join("");
 
 qsa("[data-hero]").forEach(b => {
   b.addEventListener("click", () => {
     const p = PRODUCTS.find(x => x.id === b.dataset.hero);
-    if (!p || !heroViewer) return;
+    if (!p) return;
     qsa("[data-hero]").forEach(x => x.classList.toggle("is-active", x === b));
-    heroViewer.load(p);
-    const badge = qs("#hero-badge"); if (!badge) return;
-    badge.textContent = "LIVE 3D · " + p.short.toUpperCase();
-    badge.animate?.([{ opacity: 0, transform: "translateY(-6px)" }, { opacity: 1, transform: "none" }], { duration: 340, easing: "ease-out" });
+    showHero(p);
   });
 });
 
@@ -111,24 +149,24 @@ if (heroChips) heroChips.innerHTML = `
 qsa("#hero-chips [data-view]").forEach(b => {
   b.addEventListener("click", () => {
     qsa("#hero-chips [data-view]").forEach(x => x.classList.toggle("is-active", x === b));
-    heroViewer?.preset(b.dataset.view);
+    ensureHeroViewer()?.preset(b.dataset.view);
     heroViewer?.setAutoRotate(false);
-    qs("#btn-spin").classList.add("is-off");
+    qs("#btn-spin")?.classList.add("is-off");
   });
 });
 
 /* viewer tools */
 const spinBtn = qs("#btn-spin");
 spinBtn?.addEventListener("click", () => {
-  if (!heroViewer) return;
-  const on = !heroViewer.controls.autoRotate;
-  heroViewer.setAutoRotate(on);
+  const v = ensureHeroViewer(); if (!v) return;
+  const on = !v.controls.autoRotate;
+  v.setAutoRotate(on);
   spinBtn.classList.toggle("is-off", !on);
 });
-qs("#btn-zoomin")?.addEventListener("click", () => heroViewer?.zoomBy(0.84));
-qs("#btn-zoomout")?.addEventListener("click", () => heroViewer?.zoomBy(1.19));
+qs("#btn-zoomin")?.addEventListener("click", () => ensureHeroViewer()?.zoomBy(0.84));
+qs("#btn-zoomout")?.addEventListener("click", () => ensureHeroViewer()?.zoomBy(1.19));
 qs("#btn-reset")?.addEventListener("click", () => {
-  heroViewer?.reset();
+  ensureHeroViewer()?.reset();
   spinBtn?.classList.remove("is-off");
 });
 

@@ -101,13 +101,20 @@ export function productCard(p, opts = {}) {
   return `
   <article class="card" data-reveal ${opts.delay ? `data-delay="${opts.delay}"` : ""}>
     <div class="card__media">
-      <div class="stage" data-stage="${p.id}" data-pad="${opts.pad ?? 1.32}" data-spin="${opts.spin ?? 0.30}"
+      <img class="card__photo" src="${p.photo || ""}" alt="${p.name} — ${p.packSize}" loading="lazy" decoding="async"
+           onerror="this.classList.add('is-missing')">
+      <div class="card__art">${thumbHTML(p, { size: "md", label: false })}</div>
+      <div class="stage" data-pad="${opts.pad ?? 1.32}" data-spin="${opts.spin ?? 0.30}" hidden
            role="img" aria-label="Interactive 3D model of ${p.name}. Drag to rotate."></div>
       <div class="card__flags">
         ${p.badge ? `<span class="flag ${p.badge.toLowerCase().includes("save") || p.badge.toLowerCase().includes("value") ? "flag--sale" : ""}">${p.badge}</span>` : ""}
         ${saving ? `<span class="flag flag--sale">−${pctOff}%</span>` : ""}
         ${low ? `<span class="flag flag--low">Only ${p.stock} left</span>` : ""}
       </div>
+      <button class="card__3d" data-spin="${p.id}" title="Inspect in 360° 3D" aria-label="Inspect ${p.name} in 360 degree 3D">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4c4.4 0 8 1.9 8 4.2s-3.6 4.2-8 4.2-8-1.9-8-4.2S7.6 4 12 4Z"/><path d="M12 12.4V20c4.4 0 8-1.9 8-4.2V8.2M12 12.4V20c-4.4 0-8-1.9-8-4.2V8.2"/></svg>
+        360°
+      </button>
       <a class="card__quick" href="product.html?id=${p.id}" title="Open ${p.name}" aria-label="Open ${p.name}">
         <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
@@ -133,6 +140,28 @@ export function productCard(p, opts = {}) {
       </div>
     </div>
   </article>`;
+}
+
+/** Wire the "360°" buttons: mount the 3D model only when a customer asks for it. */
+export function bindSpinButtons(scope = document) {
+  scope.querySelectorAll("[data-spin]").forEach(btn => {
+    if (btn.dataset.bound) return;
+    btn.dataset.bound = "1";
+    btn.addEventListener("click", (e) => {
+      e.preventDefault(); e.stopPropagation();
+      const media = btn.closest(".card__media");
+      const stage = media.querySelector(".stage");
+      const on = !media.classList.contains("is-3d");
+      media.classList.toggle("is-3d", on);
+      stage.hidden = !on;
+      btn.classList.toggle("is-on", on);
+      btn.setAttribute("aria-pressed", String(on));
+      if (on && !stage.dataset.mounted) {
+        stage.dataset.stage = btn.dataset.spin;
+        mountStages(media);
+      }
+    });
+  });
 }
 
 /** Category tile */

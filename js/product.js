@@ -2,29 +2,13 @@
    PRODUCT DETAIL PAGE
    ============================================================ */
 
-import { init, makeViewer, productCard, mountStages, qs, qsa, param, CATEGORIES, C } from "./app.js";
+import { init, makeViewer, productCard, mountStages, bindSpinButtons, qs, qsa, param, CATEGORIES, C } from "./app.js";
 import { getProduct, money, addToCart, waLink, relatedProducts } from "./store.js";
 import { stars, bindAddButtons, mountReveal, toast } from "./ui.js";
 
 const gallery = init("shop");
 const id = param("id");
 const product = getProduct(id);
-
-/* ---------- not found ---------- */
-if (!product) {
-  qs("#crumbs").innerHTML = `<a href="index.html">Home</a><span>/</span><a href="catalogue.html">Catalogue</a><span>/</span><span>Not found</span>`;
-  document.querySelector("main").insertAdjacentHTML("beforeend", `
-    <div class="wrap"><div class="empty" style="padding:90px 20px">
-      <h3>We couldn't find that product</h3>
-      <p>The link may be old, or the item may be out of stock right now.</p>
-      <div class="hero__cta" style="justify-content:center;margin-top:22px">
-        <a class="btn btn--primary" href="catalogue.html">Browse the catalogue</a>
-        <a class="btn btn--ghost" href="contact.html">Ask us instead</a>
-      </div>
-    </div></div>`);
-} else {
-  render();
-}
 
 /* ---------- deterministic sample reviews ---------- */
 function seededRandom(seed) {
@@ -242,13 +226,35 @@ function render() {
     document.querySelector(".tabs").scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
-  /* ---------- 3D viewer ---------- */
-  const viewer = makeViewer(qs("#pdp-viewer"), {
-    product: p, floorColor: "#efe9e0", accent: p.model.palette.accent
-  });
-  if (viewer) viewer.load(p);
+  /* ---------- product photo + on-demand 3D ---------- */
+  const photoEl = qs("#pdp-photo");
+  if (photoEl) {
+    photoEl.src = p.photo || "";
+    photoEl.alt = `${p.name} — official product photo`;
+  }
+  let viewer = null;
+  const ensureViewer = () => {
+    if (viewer) return viewer;
+    viewer = makeViewer(qs("#pdp-viewer"), {
+      product: p, floorColor: "#efe9e0", accent: p.model.palette.accent
+    });
+    if (viewer) viewer.load(p);
+    return viewer;
+  };
+  const setView = (mode) => {
+    const vis = qs("#pdp-visual");
+    const is3d = mode === "3d";
+    vis.classList.toggle("is-3d", is3d);
+    qs("#pdp-viewer").hidden = !is3d;
+    qsa("[data-pdpview]").forEach(b => b.classList.toggle("is-active", b.dataset.pdpview === mode));
+    qs("#angles").style.visibility = is3d ? "" : "hidden";
+    if (is3d) ensureViewer();
+  };
+  qsa("[data-pdpview]").forEach(b => b.addEventListener("click", () => setView(b.dataset.pdpview)));
+  photoEl?.addEventListener("error", () => setView("3d"));   // no photo on file yet -> show the 3D
+  ensureViewer();
   const badgeEl = qs("#pdp-badge");
-  if (badgeEl) badgeEl.textContent = "LIVE 3D · " + p.short.toUpperCase();
+  if (badgeEl) badgeEl.textContent = "360° · " + p.short.toUpperCase();
 
   const anglesEl = qs("#angles");
   if (anglesEl) anglesEl.innerHTML = [
@@ -259,32 +265,33 @@ function render() {
   qsa("[data-angle]").forEach(b => {
     b.addEventListener("click", () => {
       qsa("[data-angle]").forEach(x => x.classList.toggle("is-active", x === b));
-      viewer?.preset(b.dataset.angle);
-      viewer?.setAutoRotate(false);
+      v()?.preset(b.dataset.angle);
+      v()?.setAutoRotate(false);
       qs("#btn-spin").classList.add("is-off");
       const spinLbl = qs("#angle-spin");
       if (spinLbl) spinLbl.textContent = "▶ Resume spin";
     });
   });
+  const v = () => ensureViewer();
   qs("#angle-spin")?.addEventListener("click", () => {
-    if (!viewer) return;
-    const on = !viewer.controls.autoRotate;
-    viewer.setAutoRotate(on);
+    const vv = v(); if (!vv) return;
+    const on = !vv.controls.autoRotate;
+    vv.setAutoRotate(on);
     const lbl = qs("#angle-spin"); if (lbl) lbl.textContent = on ? "⏸ Pause spin" : "▶ Resume spin";
     qs("#btn-spin").classList.toggle("is-off", !on);
   });
 
   qs("#btn-spin")?.addEventListener("click", () => {
-    if (!viewer) return;
-    const on = !viewer.controls.autoRotate;
-    viewer.setAutoRotate(on);
+    const vv = v(); if (!vv) return;
+    const on = !vv.controls.autoRotate;
+    vv.setAutoRotate(on);
     qs("#btn-spin").classList.toggle("is-off", !on);
     const spinLbl = qs("#angle-spin");
     if (spinLbl) spinLbl.textContent = on ? "⏸ Pause spin" : "▶ Resume spin";
   });
-  qs("#btn-zoomin")?.addEventListener("click", () => viewer?.zoomBy(0.84));
-  qs("#btn-zoomout")?.addEventListener("click", () => viewer?.zoomBy(1.19));
-  qs("#btn-reset")?.addEventListener("click", () => { viewer?.reset(); qs("#btn-spin")?.classList.remove("is-off"); });
+  qs("#btn-zoomin")?.addEventListener("click", () => v()?.zoomBy(0.84));
+  qs("#btn-zoomout")?.addEventListener("click", () => v()?.zoomBy(1.19));
+  qs("#btn-reset")?.addEventListener("click", () => { v()?.reset(); qs("#btn-spin")?.classList.remove("is-off"); });
 
   /* ---------- related ---------- */
   const rel = relatedProducts(p, 3);
@@ -292,6 +299,7 @@ function render() {
     qs("#related-section").hidden = false;
     qs("#related").innerHTML = rel.map((r, i) => productCard(r, { delay: i + 1 })).join("");
     mountStages(qs("#related"));
+    bindSpinButtons(qs("#related"));
     bindAddButtons(qs("#related"));
     mountReveal(qs("#related"));
   }
@@ -333,3 +341,19 @@ function injectJsonLd(p, saving) {
 
 /* keep 3D alive if the DOM changed after init */
 mountStages(document);
+
+/* ---------- boot (after every const above is initialised) ---------- */
+if (!product) {
+  qs("#crumbs").innerHTML = `<a href="index.html">Home</a><span>/</span><a href="catalogue.html">Catalogue</a><span>/</span><span>Not found</span>`;
+  document.querySelector("main").insertAdjacentHTML("beforeend", `
+    <div class="wrap"><div class="empty" style="padding:90px 20px">
+      <h3>We couldn't find that product</h3>
+      <p>The link may be old, or the item may be out of stock right now.</p>
+      <div class="hero__cta" style="justify-content:center;margin-top:22px">
+        <a class="btn btn--primary" href="catalogue.html">Browse the catalogue</a>
+        <a class="btn btn--ghost" href="contact.html">Ask us instead</a>
+      </div>
+    </div></div>`);
+} else {
+  render();
+}

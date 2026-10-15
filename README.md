@@ -88,6 +88,20 @@ no image files to replace, because every label is painted at runtime.
 **Add a product:** copy any object in the array, give it a new `id`, done.
 It appears in the catalogue, search, filters and cart automatically.
 
+### Your product photos → `assets/photos/`
+
+The shop is photo-led: cards, the home hero and the product page all show
+your **real DXN product photography** first, with the 3D model available
+on a "360°" tap.
+
+1. Save one JPG per product as `assets/photos/<product-id>.jpg`
+   (the full list of 15 file names is in [`assets/photos/README.md`](assets/photos/README.md)).
+2. Commit and push — the photos appear everywhere automatically.
+
+If a photo is missing, that product falls back to its rendered 2D tile /
+3D model, so the site never looks broken while you collect images.
+Use square or 4:5 shots, ~1200–2000 px wide, on a plain light background.
+
 ### 3. Your logo
 The mark in use is a drawn placeholder, so you aren't shipping someone else's
 trademark artwork by accident. To swap in your official asset:
